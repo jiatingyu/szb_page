@@ -51,7 +51,7 @@
           </div>
           <div>
             <p class="text-sm text-gray-500">高危人数</p>
-            <p class="text-2xl font-semibold text-gray-800">86</p>
+            <p class="text-2xl font-semibold text-gray-800">816</p>
           </div>
         </div>
       </div>
@@ -139,7 +139,7 @@
                   <i class="fas fa-user"></i>
                 </div>
                 <div>
-                  <h4 class="font-medium text-gray-900">张伟 (男, 45岁)</h4>
+                  <h4 class="font-medium text-gray-900">张伟建 (男, 45岁)</h4>
                   <p class="text-sm text-gray-500">
                     病历号: P20230615001 | 联系电话: 138****1234
                   </p>
