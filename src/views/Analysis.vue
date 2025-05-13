@@ -1,92 +1,99 @@
 <script setup lang="ts">
-const chartColors = {
-  blue: {
-    default: "rgba(59, 130, 246, 0.8)",
-    remaining: "rgba(209, 213, 219, 0.5)",
-  },
-  green: {
-    default: "rgba(16, 185, 129, 0.8)",
-    remaining: "rgba(209, 213, 219, 0.5)",
-  },
-  red: {
-    default: "rgba(239, 68, 68, 0.8)",
-    remaining: "rgba(209, 213, 219, 0.5)",
-  },
-};
+import { onMounted } from "vue";
 
-// 创建饼图函数
-function createPieChart(
-  id: string,
-  value: number,
-  color: { default: any; remaining: any }
-) {
-  const ctx = (document.getElementById(id)! as any).getContext("2d");
-  const remaining = 100 - value;
-  // @ts-ignore
-  return new Chart(ctx, {
-    type: "pie",
-    data: {
-      labels: ["达标", "未达标"],
-      datasets: [
-        {
-          data: [value, remaining],
-          backgroundColor: [color.default, color.remaining],
-          borderColor: [color.default, color.remaining],
-          borderWidth: 1,
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: false,
-        },
-        tooltip: {
-          callbacks: {// @ts-ignore
-            label: function (context) {
-              return context.label + ": " + context.raw + "%";
-            },
+onMounted(() => {
+    setTimeout(() => {
+        const chartColors = {
+          blue: {
+            default: "rgba(59, 130, 246, 0.8)",
+            remaining: "rgba(209, 213, 219, 0.5)",
           },
-        },
-      },
-      cutout: "65%",
-    },
-  });
-}
-
-// 初始化所有图表
-document.addEventListener("DOMContentLoaded", function () {
-  // 图表1: 肾活检术前检查完成率
-  createPieChart("chart1", 92.5, chartColors.blue);
-
-  // 图表2: 病理切片染色规范率
-  createPieChart("chart2", 96.3, chartColors.blue);
-
-  // 图表3: 病理分型诊断率
-  createPieChart("chart3", 100, chartColors.green);
-
-  // 图表4: RAS阻断剂使用率
-  createPieChart("chart4", 88.7, chartColors.blue);
-
-  // 图表5: 随访完成率
-  createPieChart("chart5", 85.0, chartColors.blue);
-
-  // 图表6: 血压控制达标率
-  createPieChart("chart6", 76.3, chartColors.blue);
-
-  // 图表7: 肾功能恶化率
-  createPieChart("chart7", 8.8, chartColors.red);
-
-  // 图表8: 尿蛋白<1g患者比例
-  createPieChart("chart8", 62.5, chartColors.green);
-
-  // 图表9: 肾活检并发症发生率
-  createPieChart("chart9", 2.5, chartColors.red);
-
-  // 图表10: 激素治疗并发症率
-  createPieChart("chart10", 10.0, chartColors.red);
+          green: {
+            default: "rgba(16, 185, 129, 0.8)",
+            remaining: "rgba(209, 213, 219, 0.5)",
+          },
+          red: {
+            default: "rgba(239, 68, 68, 0.8)",
+            remaining: "rgba(209, 213, 219, 0.5)",
+          },
+        };
+      
+        // 创建饼图函数
+        function createPieChart(
+          id: string,
+          value: number,
+          color: { default: any; remaining: any }
+        ) {
+          const ctx = (document.getElementById(id)! as any).getContext("2d");
+          const remaining = 100 - value;
+          // @ts-ignore
+          return new Chart(ctx, {
+            type: "pie",
+            data: {
+              labels: ["达标", "未达标"],
+              datasets: [
+                {
+                  data: [value, remaining],
+                  backgroundColor: [color.default, color.remaining],
+                  borderColor: [color.default, color.remaining],
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  display: false,
+                },
+                tooltip: {
+                  callbacks: {
+                    // @ts-ignore
+                    label: function (context) {
+                      return context.label + ": " + context.raw + "%";
+                    },
+                  },
+                },
+              },
+              cutout: "65%",
+            },
+          });
+        }
+      
+        // 初始化所有图表
+        document.addEventListener("DOMContentLoaded", function () {
+          // 图表1: 肾活检术前检查完成率
+          createPieChart("chart1", 92.5, chartColors.blue);
+      
+          // 图表2: 病理切片染色规范率
+          createPieChart("chart2", 96.3, chartColors.blue);
+      
+          // 图表3: 病理分型诊断率
+          createPieChart("chart3", 100, chartColors.green);
+      
+          // 图表4: RAS阻断剂使用率
+          createPieChart("chart4", 88.7, chartColors.blue);
+      
+          // 图表5: 随访完成率
+          createPieChart("chart5", 85.0, chartColors.blue);
+      
+          // 图表6: 血压控制达标率
+          createPieChart("chart6", 76.3, chartColors.blue);
+      
+          // 图表7: 肾功能恶化率
+          createPieChart("chart7", 8.8, chartColors.red);
+      
+          // 图表8: 尿蛋白<1g患者比例
+          createPieChart("chart8", 62.5, chartColors.green);
+      
+          // 图表9: 肾活检并发症发生率
+          createPieChart("chart9", 2.5, chartColors.red);
+      
+          // 图表10: 激素治疗并发症率
+          createPieChart("chart10", 10.0, chartColors.red);
+        });
+    }, 100);
 });
 </script>
 
